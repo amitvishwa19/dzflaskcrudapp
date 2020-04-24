@@ -5,13 +5,24 @@
 {% endblock %}
 
 {% block body %}
-<h1>Edit[']'] Posts</h1>
+<h3>Edit Posts</h3>
 
 <br>
 <form action="/posts" method="POST">
-    Title: <input type="text" name="title">
-    Body: <textarea name="body" id="" cols="30" rows="10"></textarea>
-    <button>Submit</button>
+    <label for="title">Title:</label>
+    <input class="form-control" type="text" name='title' value="{{post.title}}" aria-label="Enter Title">
+        
+    <br>
+    <label for="author">Author:</label>
+    <input class="form-control" type="text" name='author' value="{{post.author}}" aria-label="Enter Author">
+    
+    <br>
+    <label for="content">Post:</label>
+    <textarea class="form-control" name='body' aria-label="Enter Content" rows="10">{{post.body}}</textarea>
+        
+    <br>
+    <button class="btn btn-primary">Update Post</button>
+    <a href="/posts" class="btn btn-default">Discard</a>
 </form>
 
 {% endblock %}
