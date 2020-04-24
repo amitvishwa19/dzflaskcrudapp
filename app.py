@@ -24,11 +24,17 @@ class BlogPost(db.Model):
 def index():
     return render_template('index.html')
 
-@app.route('/posts', methods=['GET'])
+@app.route('/posts', methods=['GET','POST'])
 def all_posts():
 
     posts = BlogPost.query.all()
-    return render_template('post.html',posts = posts)
+    return render_template('posts.html',posts = posts)
+
+@app.route('/post/<int:id>', methods=['GET'])
+def post(id):
+    post = BlogPost.query.get_or_404(id)
+    return render_template('post.html',post = post)
+
 
 @app.route('/post/delete/<int:id>')
 def delete(id):

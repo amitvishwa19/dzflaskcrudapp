@@ -1,13 +1,17 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<title>Post</title>
+<title>Posts</title>
 {% endblock %}
 
 {% block body %}
 
-   
-        <h2><a href="">{{ post.title }}</a></h2>
+    <a href="/post/new" class="btn btn-primary">Add Post</a>
+    <br><br>
+
+    {% for post in posts %}
+
+        <h2><a href="/post/{{post.id}}" class="post-title">{{ post.title }}</a></h2>
 
         {% if post.author %}
             <small>Posted by : By : {{post.author}} on {{post.created_at}}</small>
@@ -24,5 +28,5 @@
         <a href="/post/delete/{{post.id}}" style="margin-left: 10px;">Delete</a>
 
         <hr>
- 
+    {% endfor %}
 {% endblock %}
